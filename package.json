@@ -1,0 +1,43 @@
+{
+  "description": "TODO",
+  "devDependencies": {
+    "@babel/core": "7.7.4",
+    "@storybook/addon-actions": "5.2.8",
+    "@storybook/addon-links": "5.2.8",
+    "@storybook/addons": "5.2.8",
+    "@storybook/svelte": "5.2.8",
+    "babel-loader": "8.0.6",
+    "npm-run-all": "4.1.5",
+    "rollup": "1.27.7",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-livereload": "1.0.1",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-svelte": "5.1.1",
+    "rollup-plugin-terser": "5.1.2",
+    "sirv-cli": "0.4.5",
+    "svelte": "3.16.0",
+    "svelte-loader": "2.13.6"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "svelte"
+  ],
+  "license": "TODO",
+  "main": "dist/index.min.js",
+  "module": "dist/index.min.mjs",
+  "name": "TODO",
+  "repository": "TODO",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --single",
+    "start:dev": "sirv public --single --dev",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "svelte": "src/components/components.module.js",
+  "dependencies": {}
+}
