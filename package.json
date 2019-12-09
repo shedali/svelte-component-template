@@ -11,8 +11,10 @@
     "@testing-library/svelte": "1.11.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
+    "husky": "3.1.0",
     "jest": "24.9.0",
     "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
     "rollup": "1.27.7",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-livereload": "1.0.1",
@@ -31,6 +33,28 @@
   "keywords": [
     "svelte"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "run-s build test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.svelte": [
+      "lint",
+      "git add"
+    ],
+    "src/**/*.ts": [
+      "lint",
+      "git add"
+    ],
+    "src/**/*.spec.ts": [
+      "ava"
+    ],
+    "cypress/**/*.spec.ts": [
+      "yarn build && yarn export && start-test serve 5999 spec "
+    ]
+  },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest",
@@ -63,7 +87,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+    "posttest": "npm run format",
+    "test:watch": "npm run test -- --watch",
+    "format": "prettier --write \"**/*.{js,css,md}\""
   },
   "svelte": "src/components/components.module.js",
   "dependencies": {
