@@ -1,19 +1,19 @@
 import { action } from '@storybook/addon-actions';
 
-import Button from './button.svelte';
+import App from './components/Component.svelte';
 
 export default {
-  title: 'Button',
+  title: 'App',
 };
 
 export const text = () => ({
-  Component: Button,
-  props: { text: 'Hello Button' },
+  Component: App,
+  props: { text: 'Hello App' },
   on: { click: action('clicked') },
 });
 
 export const emoji = () => ({
-  Component: Button,
+  Component: App,
   props: {
     text: '😀 😎 👍 💯',
   },

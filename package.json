@@ -2,11 +2,16 @@
   "description": "TODO",
   "devDependencies": {
     "@babel/core": "7.7.4",
+    "@babel/preset-env": "7.7.6",
     "@storybook/addon-actions": "5.2.8",
     "@storybook/addon-links": "5.2.8",
     "@storybook/addons": "5.2.8",
     "@storybook/svelte": "5.2.8",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/svelte": "1.11.0",
+    "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
+    "jest": "24.9.0",
     "npm-run-all": "4.1.5",
     "rollup": "1.27.7",
     "rollup-plugin-commonjs": "10.1.0",
@@ -16,6 +21,7 @@
     "rollup-plugin-terser": "5.1.2",
     "sirv-cli": "0.4.5",
     "svelte": "3.16.0",
+    "svelte-jester": "1.0.3",
     "svelte-loader": "2.13.6"
   },
   "files": [
@@ -25,6 +31,24 @@
   "keywords": [
     "svelte"
   ],
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": [
+        "svelte-jester",
+        {
+          "preprocess": true
+        }
+      ]
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  },
   "license": "TODO",
   "main": "dist/index.min.js",
   "module": "dist/index.min.mjs",
@@ -32,12 +56,17 @@
   "repository": "TODO",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "devserver": "rollup -c -w",
+    "dev": "run-p devserver storybook",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch"
   },
   "svelte": "src/components/components.module.js",
-  "dependencies": {}
+  "dependencies": {
+    "svelte-preprocess": "3.2.6"
+  }
 }

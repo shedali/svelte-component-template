@@ -1,5 +1,5 @@
 <script>
-  export let name = 'stranger';
+  export let name = 'world';
 </script>
 
 <style>
