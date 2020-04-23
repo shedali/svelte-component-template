@@ -27,6 +27,9 @@
     "svelte-jester": "1.0.3",
     "svelte-loader": "2.13.6"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "src",
     "dist"
