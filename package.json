@@ -74,7 +74,7 @@
       "@testing-library/jest-dom/extend-expect"
     ]
   },
-  "license": "TODO",
+  "license": "unlicensed",
   "main": "dist/index.min.js",
   "module": "dist/index.min.mjs",
   "name": "TODO",
