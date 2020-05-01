@@ -12,10 +12,3 @@ export const text = () => ({
 	on: { click: action("clicked") }
 });
 
-export const emoji = () => ({
-	Component: App,
-	props: {
-		text: "😀 😎 👍 💯"
-	},
-	on: { click: action("clicked") }
-});

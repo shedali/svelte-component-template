@@ -1,19 +1,28 @@
 {
   "description": "TODO",
   "devDependencies": {
-    "@babel/core": "7.7.4",
+    "@babel/core": "7.9.6",
     "@babel/preset-env": "7.7.6",
+    "@babel/preset-typescript": "7.9.0",
+    "@pyoner/svelte-types": "3.4.4-2",
+    "@rollup/plugin-typescript": "4.1.1",
     "@storybook/addon-actions": "5.2.8",
     "@storybook/addon-links": "5.2.8",
     "@storybook/addons": "5.2.8",
-    "@storybook/svelte": "5.2.8",
+    "@storybook/svelte": "5.3.18",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/svelte": "1.11.0",
-    "babel-jest": "24.9.0",
-    "babel-loader": "8.0.6",
+    "@types/jest": "25.2.1",
+    "@types/lodash": "4.14.150",
+    "@types/mocha": "7.0.2",
+    "babel-jest": "25.5.1",
+    "babel-loader": "8.1.0",
     "husky": "3.1.0",
-    "jest": "24.9.0",
+    "jest": "25.5.3",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
     "lint-staged": "9.5.0",
+    "mocha": "7.1.2",
     "npm-run-all": "4.1.5",
     "prettier": "1.19.1",
     "rollup": "1.27.7",
@@ -24,8 +33,10 @@
     "rollup-plugin-terser": "5.1.2",
     "sirv-cli": "0.4.5",
     "svelte": "3.16.0",
-    "svelte-jester": "1.0.3",
-    "svelte-loader": "2.13.6"
+    "svelte-jester": "1.0.5",
+    "svelte-loader": "2.13.6",
+    "ts-jest": "25.4.0",
+    "ts-loader": "7.0.2"
   },
   "publishConfig": {
     "access": "public"
@@ -60,17 +71,21 @@
     ]
   },
   "jest": {
+
     "transform": {
       "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "babel-jest",
       "^.+\\.svelte$": [
         "svelte-jester",
         {
-          "preprocess": true
+          "preprocess": true,
+          "debug": true
         }
       ]
     },
     "moduleFileExtensions": [
       "js",
+      "ts",
       "svelte"
     ],
     "setupFilesAfterEnv": [
@@ -90,6 +105,7 @@
     "start:dev": "sirv public --single --dev",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "pretest": "tsc --noEmit",
     "test": "jest src",
     "posttest": "npm run format",
     "test:watch": "npm run test -- --watch",
@@ -97,6 +113,6 @@
   },
   "svelte": "src/components/components.module.js",
   "dependencies": {
-    "svelte-preprocess": "3.2.6"
+    "svelte-preprocess": "3.7.4"
   }
 }

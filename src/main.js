@@ -1,4 +1,4 @@
-import Component from "./Component.svelte";
+import Component from "./Consumer.svelte";
 
 const app = new Component({
 	target: document.body,

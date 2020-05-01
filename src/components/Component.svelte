@@ -1,11 +1,17 @@
-<script>
-  export let name = 'world';
+<script lang="typescript">
+    import {IFace} from "./types";
+    export let name: IFace = {
+        head: true,
+        nose: false
+    }
 </script>
 
 <style>
-  h1 {
-    color: purple;
-  }
+    h1 {
+        color: purple;
+    }
 </style>
 
-<h1>Hello {name}!</h1>
+
+<h1>Hello what {name.head}</h1>
+

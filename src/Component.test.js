@@ -1,7 +1,7 @@
 // NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/svelte";
-import Component from "./Component.svelte";
+import Component from "./components/Component.svelte";
 
 test("shows proper heading when rendered", () => {
 	const { getByText } = render(Component, { name: "World" });
