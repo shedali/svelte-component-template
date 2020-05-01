@@ -5,7 +5,7 @@ import Component from "./components/Component.svelte";
 
 test("shows proper heading when rendered", () => {
 	const { getByText } = render(Component, { name: "World" });
-	expect(getByText("Hello World!")).toBeInTheDocument();
+	expect(getByText("Hello Mr")).toBeInTheDocument();
 });
 
 // Note: This is as an async test as we are using `fireEvent`

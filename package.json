@@ -79,7 +79,7 @@
         "svelte-jester",
         {
           "preprocess": true,
-          "debug": true
+          "debug": false
         }
       ]
     },

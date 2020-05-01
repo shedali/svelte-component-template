@@ -1,5 +1,6 @@
 <script lang="typescript">
     import {IFace} from "./types";
+
     export let name: IFace = {
         head: true,
         nose: false
@@ -13,5 +14,5 @@
 </style>
 
 
-<h1>Hello what {name.head}</h1>
+<h1>Hello Mr</h1>
 
