@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "ESNEXT",
+    "target": "ES2015",
+    "module": "ES2015",
     "moduleResolution": "node",
     "strict": true,
     "emitDecoratorMetadata": true,
@@ -17,7 +17,14 @@
     "allowJs": true,
     "noUnusedLocals": false,
     "pretty": true,
-    "types": [ "jest"],
+    "types": [
+      "svelte",
+      "node"
+    ],
+    "typeRoots": [
+      "typings",
+      "../node_modules/@types"
+    ],
     "esModuleInterop": true,
     "lib": [
       "esnext",
@@ -26,6 +33,13 @@
     "baseUrl": "./",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "build", "scripts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules/*",
+    "src/**/*.test.ts",
+    "build",
+    "scripts"
+  ]
 }

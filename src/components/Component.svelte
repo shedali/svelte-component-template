@@ -1,18 +1,18 @@
 <script lang="typescript">
+    export let name: string;
     import {IFace} from "./types";
 
-    export let name: IFace = {
-        head: true,
-        nose: false
-    }
+    export let face: IFace = {head: true, nose: true};
 </script>
+
 
 <style>
     h1 {
-        color: purple;
+        color: blue;
     }
 </style>
 
+<h1 on:click={console.log}>{name}</h1>
 
-<h1>Hello Mr</h1>
-
+<p>has head {face.head}</p>
+<p>has head {face.nose}</p>

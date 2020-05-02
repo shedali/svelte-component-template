@@ -1,15 +1,9 @@
-<script lang="typescript">
-    import Component from './components/components.module.js';
-    import {IFace} from "./components/types"
-
-    const name: IFace = {
-        nose: true, head: true
-    }
+<script >
+    import Component from "./components/Component.svelte";
 </script>
 
 <style>
 
 </style>
 
-
-<Component {name}/>
+<Component name="head"/>

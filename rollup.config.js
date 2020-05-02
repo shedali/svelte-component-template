@@ -6,7 +6,19 @@ import resolve from "rollup-plugin-node-resolve";
 import rollup_start_dev from "./rollup_start_dev";
 import svelte from "rollup-plugin-svelte";
 import typescript from "@rollup/plugin-typescript";
-import autoPreprocess from "svelte-preprocess";
+
+import {createEnv, preprocess, readConfigFile} from "@pyoner/svelte-ts-preprocess";
+
+const env = createEnv();
+const compilerOptions = readConfigFile(env);
+const opts = {
+    env,
+    compilerOptions: {
+        ...compilerOptions,
+        allowNonTsExtensions: true
+    }
+};
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -16,7 +28,7 @@ const name = pkg.name
     .replace(/-\w/g, m => m[1].toUpperCase());
 
 export default {
-    input: !production ? "src/main.js" : "src/components/components.module.js",
+    input: !production ? "src/main.ts" : "src/components/components.module.ts",
     output: !production
         ? {
             sourcemap: true,
@@ -40,29 +52,20 @@ export default {
         ],
     plugins: [
         svelte({
-            preprocess: autoPreprocess(),
-            // enable run-time checks when not in production
+            preprocess: preprocess(opts),
             dev: !production,
-            // we'll extract any component CSS out into
-            // a separate file — better for performance
             css: css => {
                 css.write("public/bundle.css");
             }
         }),
-
-        // If you have external dependencies installed from
-        // npm, you'll most likely need these plugins. In
-        // some cases you'll need additional configuration —
-        // consult the documentation for details:
         // https://github.com/rollup/rollup-plugin-commonjs
         resolve({
+            modulesOnly: true,
             browser: true,
             dedupe: importee =>
                 importee === "svelte" || importee.startsWith("svelte/")
         }),
-        commonjs({
-            include: ["node_modules/**"]
-        }),
+        commonjs(),
         typescript({}),
 
         // In dev mode, call `npm run start:dev` once
